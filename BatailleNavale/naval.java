@@ -20,6 +20,16 @@ public class naval {
         }
     }
 
+    void jouer() {
+        int[][] plateau_ia = new int[10][10];
+
+        navaL_ia intelligenceArtificielle = new navaL_ia();
+
+        intelligenceArtificielle.run();
+
+        System.out.println("Le plateau de l'IA est prêt, à toi de tirer !");
+    }
+
     public static void positionmentV(int[][] plateau, int ligne, int colone,
             int taille, String orientation, int tl_bateau) {
         boolean possible = true;

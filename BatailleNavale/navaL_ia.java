@@ -1,47 +1,106 @@
-/*
- * while (sousmarin != 0 || porteavion != 0 || torpilleur != 0 || croissuer !=
- * 0) {
- * // L'IA choisit un chiffre entre 0 et 4 (donc on ajoute +1 pour correspondre
- * à tes cases 1-5)
- * choix_ia = generateur.nextInt(5) + 1;
- * 
- * switch (choix_ia) {
- * case 1: // Porte-avion
- * if (bateau(porteavion, "Porte-avion") == false) continue;
- * 
- * // L'IA décide pile ou face pour l'orientation
- * int orienIA = generateur.nextInt(2); // 0 = oui, 1 = non
- * 
- * coordone = generateur.nextInt(10);
- * ligne = generateur.nextInt(10);
- * 
- * if (orienIA == 0) { // Equivalent de "oui"
- * positionmentH(plateau, ligne, coordone, ligne, "oui", 5);
- * } else { // Equivalent de "non"
- * positionmentV(plateau, ligne, coordone, ligne, "non", 5);
- * }
- * porteavion--;
- * compteur++;
- * break;
- * 
- * case 2: // Sous-marin
- * if (bateau(sousmarin, "sous-marin") == false) continue;
- * 
- * int orienIA2 = generateur.nextInt(2);
- * coordone = generateur.nextInt(10);
- * ligne = generateur.nextInt(10);
- * 
- * if (orienIA2 == 0) {
- * positionmentH(plateau, ligne, coordone, ligne, "oui", 3);
- * } else {
- * positionmentV(plateau, ligne, coordone, ligne, "non", 3);
- * }
- * sousmarin--;
- * compteur++;
- * break;
- * 
- * // Répète la même logique pour les autres cases (3, 4, 5)...
- * }
- * }
- * 
- */
+import java.util.*;
+
+public class navaL_ia {
+
+    public static boolean positionmentH_ia(int[][] plateau_ia, int ligne_ia, int colone_ia, int tl_bateau_ia) {
+        if (colone_ia + tl_bateau_ia > 10)
+            return false;
+        for (int i = 0; i < tl_bateau_ia; i++) {
+            if (plateau_ia[ligne_ia][colone_ia + i] != 0)
+                return false;
+        }
+        for (int e = 0; e < tl_bateau_ia; e++) {
+            plateau_ia[ligne_ia][colone_ia + e] = 1;
+        }
+        return true;
+    }
+
+    public static boolean positionmentV_ia(int[][] plateau_ia, int ligne_ia, int colone_ia, int tl_bateau_ia) {
+        if (ligne_ia + tl_bateau_ia > 10)
+            return false;
+        for (int i = 0; i < tl_bateau_ia; i++) {
+            if (plateau_ia[ligne_ia + i][colone_ia] != 0)
+                return false;
+        }
+        for (int e = 0; e < tl_bateau_ia; e++) {
+            plateau_ia[ligne_ia + e][colone_ia] = 1;
+        }
+        return true;
+    }
+
+    /*
+     * public static void affichage_ia(int[][] plateau_ia) {
+     * System.out.println("\n   A B C D E F G H I J");
+     * for (int i = 0; i < 10; i++) {
+     * System.out.print((i + 1) + (i < 9 ? "  " : " "));
+     * for (int b = 0; b < 10; b++) {
+     * System.out.print(plateau_ia[i][b] + " ");
+     * }
+     * System.out.println("");
+     * }
+     * }
+     */
+
+    int sousmarin_ia = 2, porteavion_ia = 1, croisseur_ia = 1, torpilleur_ia = 1;
+    Random generateur = new Random();
+
+    void run() {
+        int[][] plateau_ia = new int[10][10];
+        System.out.println("L'IA place ses bateaux...");
+
+        while (sousmarin_ia > 0 || porteavion_ia > 0 || croisseur_ia > 0 || torpilleur_ia > 0) {
+
+            int choix_ia = generateur.nextInt(4) + 1;
+            int orienIA = generateur.nextInt(2);
+            int lig = generateur.nextInt(10);
+            int col = generateur.nextInt(10);
+
+            switch (choix_ia) {
+                case 1:
+                    if (porteavion_ia > 0) {
+
+                        boolean ok = (orienIA == 0) ? positionmentH_ia(plateau_ia, lig, col, 5)
+                                : positionmentV_ia(plateau_ia, lig, col, 5);
+                        if (ok)
+                            porteavion_ia--;
+                    }
+                    break;
+
+                case 2:
+                    if (sousmarin_ia > 0) {
+
+                        boolean ok = (orienIA == 0) ? positionmentH_ia(plateau_ia, lig, col, 3)
+                                : positionmentV_ia(plateau_ia, lig, col, 3);
+                        if (ok)
+                            sousmarin_ia--;
+                    }
+                    break;
+
+                case 3:
+                    if (torpilleur_ia > 0) {
+                        boolean ok = (orienIA == 0) ? positionmentH_ia(plateau_ia, lig, col, 2)
+                                : positionmentV_ia(plateau_ia, lig, col, 2);
+                        if (ok)
+                            torpilleur_ia--;
+                    }
+                    break;
+
+                case 4:
+                    if (croisseur_ia > 0) {
+                        boolean ok = (orienIA == 0) ? positionmentH_ia(plateau_ia, lig, col, 4)
+                                : positionmentV_ia(plateau_ia, lig, col, 4);
+                        if (ok)
+                            croisseur_ia--;
+                    }
+                    break;
+            }
+        }
+
+        // affichage_ia(plateau_ia);//
+        System.out.println("Tous les bateaux sont placés !");
+    }
+
+    public static void main(String[] args) {
+        new navaL_ia().run();
+    }
+}
