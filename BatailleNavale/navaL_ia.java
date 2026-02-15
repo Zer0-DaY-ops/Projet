@@ -44,7 +44,7 @@ public class navaL_ia {
     int sousmarin_ia = 2, porteavion_ia = 1, croisseur_ia = 1, torpilleur_ia = 1;
     Random generateur = new Random();
 
-    void run() {
+    public int[][] run() {
         int[][] plateau_ia = new int[10][10];
         System.out.println("L'IA place ses bateaux...");
 
@@ -59,9 +59,9 @@ public class navaL_ia {
                 case 1:
                     if (porteavion_ia > 0) {
 
-                        boolean ok = (orienIA == 0) ? positionmentH_ia(plateau_ia, lig, col, 5)
+                        boolean possible = (orienIA == 0) ? positionmentH_ia(plateau_ia, lig, col, 5)
                                 : positionmentV_ia(plateau_ia, lig, col, 5);
-                        if (ok)
+                        if (possible)
                             porteavion_ia--;
                     }
                     break;
@@ -69,27 +69,27 @@ public class navaL_ia {
                 case 2:
                     if (sousmarin_ia > 0) {
 
-                        boolean ok = (orienIA == 0) ? positionmentH_ia(plateau_ia, lig, col, 3)
+                        boolean possible2 = (orienIA == 0) ? positionmentH_ia(plateau_ia, lig, col, 3)
                                 : positionmentV_ia(plateau_ia, lig, col, 3);
-                        if (ok)
+                        if (possible2)
                             sousmarin_ia--;
                     }
                     break;
 
                 case 3:
                     if (torpilleur_ia > 0) {
-                        boolean ok = (orienIA == 0) ? positionmentH_ia(plateau_ia, lig, col, 2)
+                        boolean possibl3 = (orienIA == 0) ? positionmentH_ia(plateau_ia, lig, col, 2)
                                 : positionmentV_ia(plateau_ia, lig, col, 2);
-                        if (ok)
+                        if (possibl3)
                             torpilleur_ia--;
                     }
                     break;
 
                 case 4:
                     if (croisseur_ia > 0) {
-                        boolean ok = (orienIA == 0) ? positionmentH_ia(plateau_ia, lig, col, 4)
+                        boolean possible4 = (orienIA == 0) ? positionmentH_ia(plateau_ia, lig, col, 4)
                                 : positionmentV_ia(plateau_ia, lig, col, 4);
-                        if (ok)
+                        if (possible4)
                             croisseur_ia--;
                     }
                     break;
@@ -98,6 +98,7 @@ public class navaL_ia {
 
         // affichage_ia(plateau_ia);//
         System.out.println("Tous les bateaux sont placés !");
+        return plateau_ia;
     }
 
     public static void main(String[] args) {
