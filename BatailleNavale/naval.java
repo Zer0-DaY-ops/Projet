@@ -140,16 +140,13 @@ public class naval {
                     ligne = scan.nextInt() - 1;
                     boolean succes = false;
                     if (orientation.equals("oui")) {
-                        // On appelle la méthode et on récupère son résultat (true ou false)
                         succes = positionmentH(plateau, ligne, coordone, 0, orientation, 5);
                     } else {
                         succes = positionmentV(plateau, ligne, coordone, 0, orientation, 5);
                     }
-
-                    // 2. On ne met à jour les compteurs QUE si le placement a réussi
                     if (succes) {
                         porteavion--;
-                        compteur++; // Si tu utilises compteur pour suivre le nombre total de bateaux
+                        compteur++;
                         affichage(plateau);
                     } else {
                         System.out.println("Le bateau n'a pas pu être placé. Réessayez.");
@@ -167,16 +164,13 @@ public class naval {
                     ligne = scan.nextInt() - 1;
                     boolean succes1 = false;
                     if (orientation1.equals("oui")) {
-                        // On appelle la méthode et on récupère son résultat (true ou false)
                         succes1 = positionmentH(plateau, ligne, coordone, 0, orientation1, 3);
                     } else {
                         succes1 = positionmentV(plateau, ligne, coordone, 0, orientation1, 3);
                     }
-
-                    // 2. On ne met à jour les compteurs QUE si le placement a réussi
                     if (succes1) {
                         sousmarin--;
-                        compteur++; // Si tu utilises compteur pour suivre le nombre total de bateaux
+                        compteur++;
                         affichage(plateau);
                     } else {
                         System.out.println("Le bateau n'a pas pu être placé. Réessayez.");
@@ -194,16 +188,13 @@ public class naval {
                     ligne = scan.nextInt() - 1;
                     boolean succes2 = false;
                     if (orientation2.equals("oui")) {
-                        // On appelle la méthode et on récupère son résultat (true ou false)
                         succes2 = positionmentH(plateau, ligne, coordone, 0, orientation2, 4);
                     } else {
                         succes2 = positionmentV(plateau, ligne, coordone, 0, orientation2, 4);
                     }
-
-                    // 2. On ne met à jour les compteurs QUE si le placement a réussi
                     if (succes2) {
                         croissuer--;
-                        compteur++; // Si tu utilises compteur pour suivre le nombre total de bateaux
+                        compteur++;
                         affichage(plateau);
                     } else {
                         System.out.println("Le bateau n'a pas pu être placé. Réessayez.");
@@ -221,16 +212,14 @@ public class naval {
                     ligne = scan.nextInt() - 1;
                     boolean succes3 = false;
                     if (orientation3.equals("oui")) {
-                        // On appelle la méthode et on récupère son résultat (true ou false)
                         succes3 = positionmentH(plateau, ligne, coordone, 0, orientation3, 2);
                     } else {
                         succes3 = positionmentV(plateau, ligne, coordone, 0, orientation3, 2);
                     }
 
-                    // 2. On ne met à jour les compteurs QUE si le placement a réussi
                     if (succes3) {
                         torpilleur--;
-                        compteur++; // Si tu utilises compteur pour suivre le nombre total de bateaux
+                        compteur++;
                         affichage(plateau);
                     } else {
                         System.out.println("Le bateau n'a pas pu être placé. Réessayez.");
@@ -248,16 +237,13 @@ public class naval {
                     ligne = scan.nextInt() - 1;
                     boolean succes4 = false;
                     if (orientation4.equals("oui")) {
-                        // On appelle la méthode et on récupère son résultat (true ou false)
                         succes4 = positionmentH(plateau, ligne, coordone, 0, orientation4, 2);
                     } else {
                         succes4 = positionmentV(plateau, ligne, coordone, 0, orientation4, 2);
                     }
-
-                    // 2. On ne met à jour les compteurs QUE si le placement a réussi
                     if (succes4) {
                         sousmarin--;
-                        compteur++; // Si tu utilises compteur pour suivre le nombre total de bateaux
+                        compteur++;
                         affichage(plateau);
                     } else {
                         System.out.println("Le bateau n'a pas pu être placé. Réessayez.");
@@ -278,8 +264,8 @@ public class naval {
             String orientation4 = scan.next();
             if (orientation4.equals("oui")) {
                 System.out.println("entrez coordone ");
-                coordone = scan.nextInt() - 1; // On retire 1 pour l'index
-                ligne = scan.nextInt() - 1; // On retire 1 pour l'index
+                coordone = scan.nextInt() - 1;
+                ligne = scan.nextInt() - 1;
                 attaqueH(plateau_ia, ligne, coordone);
                 System.out.println("\n--- VOTRE PLATEAU ---");
                 affichage(plateau);
