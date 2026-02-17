@@ -1,0 +1,65 @@
+body {
+  font-family: "Barlow", sans-serif;
+  background-color: #7d8e95;
+  margin: 0;
+  padding: 0;
+}
+header {
+  font-size: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #bbc5aa;
+  width: 100%;
+  padding-bottom: 10px;
+  padding-top: 15px;
+}
+
+.logo {
+  margin: 0;
+  padding-left: 100px;
+  color: rgb(255, 255, 255);
+}
+
+nav ul {
+  display: flex;
+  justify-content: flex-end;
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  top: 15px;
+  margin: 0;
+  font-weight: 600;
+  color: rgb(255, 255, 255);
+  padding-right: 100px;
+  text-align: center;
+}
+
+main .rectangle1 {
+  position: relative;
+  background-image: url("photo/photo.jpg");
+  background-size: cover; /* L'image recouvre tout le rectangle */
+  background-position: center;
+  display: flex;
+  height: 500px;
+  width: 100%;
+}
+main .rectangle1::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #dde2c6;
+  height: 100%; /* Prend toute la hauteur du parent (500px) */
+  width: 100%; /* La largeur que tu as choisie */
+  opacity: 0.4;
+}
+footer .rectangle2 {
+  background-color: #e6eed6;
+  height: 500px;
+  width: 100%;
+}
