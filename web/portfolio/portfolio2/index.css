@@ -1,5 +1,6 @@
 /* TOUT EN HAUT DE TON FICHIER index.css */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 body {
   font-family: "Montserrat", sans-serif;
@@ -22,6 +23,7 @@ header {
   gap: 40px;
   padding-left: 100px;
   text-align: center;
+  font-family: "Great Vibes", cursive;
 }
 
 nav ul {
@@ -142,27 +144,63 @@ footer .Extension {
 footer .ext {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 20px;
-  margin-bottom: 60px;
+  margin-left: 10px;
 }
 .trait2 {
-  background-color: #000000;
+  background-color: #ffffff;
   width: 100%;
-  height: 2px;
+  height: auto;
+  padding: 40px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 footer .Extension-pf {
-  background-color: #1a2421; /* Fond très sombre */
+  background-color: #95a4e6; /* Fond très sombre */
   font-size: 10px;
   color: #ffffff;
   font-family: "Montserrat", sans-serif;
   margin-left: 5%;
-  margin-top: 10px;
   padding: 5px 20px; /* Espacement intérieur */
   border-radius: 50px;
   justify-content: center;
+  display: inline-block;
   align-items: center;
+  position: relative;
+  z-index: 1;
 }
+.Extension-pf::before {
+  content: "";
+  background: linear-gradient(45deg, #ffffff, #89c9f7, #6078f3);
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 600%;
+  z-index: -1;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  filter: blur(8px);
+  animation: glowing 20s linear infinite;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+  opacity: 1;
+}
+@keyframes glowing {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
 footer .Extension-pf:hover {
   transition: all 0.8s ease;
   transform: scale(1.1);
@@ -204,9 +242,9 @@ footer .Projet {
   font-family: "Montserrat", sans-serif;
   display: flex;
   font-size: 30px;
-  margin-left: -15px;
-  padding-top: 30px;
   justify-content: center;
+  align-items: center;
+  margin-top: 0%;
 }
 
 .firefly {
