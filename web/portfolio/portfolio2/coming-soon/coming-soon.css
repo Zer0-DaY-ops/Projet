@@ -1,0 +1,258 @@
+:root {
+  --accent: #ffd700;
+  --text-main: #000000;
+  --text-muted: #666666;
+  --white: aliceblue;
+  --bg-light: #f8f9fa;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: var(--white);
+  color: var(--text-main);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+header {
+  padding: 30px 5%;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+.logo a {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+}
+
+.logo span {
+  color: var(--accent);
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 5%;
+}
+nav ul {
+  position: relative;
+  display: flex;
+  text-decoration: none;
+  justify-content: flex-end;
+  list-style: none;
+  display: flex;
+  gap: 40px;
+}
+nav ul li:not(:last-child) a {
+  position: relative;
+  text-decoration: none;
+  font-weight: 600;
+  color: #000;
+  padding: 5px 0;
+}
+nav ul li:last-child a {
+  position: relative;
+  border: 2px solid #000;
+  padding: 8px 20px;
+  margin-right: 15px;
+}
+nav ul li:last-child a:hover {
+  background-color: #000;
+  color: #ffffff;
+}
+nav ul li:not(:last-child) a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0;
+  height: 2px;
+  background-color: #000;
+  transition: width 0.3s ease;
+}
+
+nav ul li:not(:last-child) a:hover::after {
+  width: 100%;
+}
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  align-items: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.btn-contact {
+  border: 2px solid var(--text-main);
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.btn-contact.active {
+  background: var(--text-main);
+  color: var(--white);
+}
+.footer-links a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: var(--text-main);
+  font-weight: 600;
+}
+/* --- Main Content --- */
+.coming-soon-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+.content {
+  z-index: 2;
+}
+
+h1 {
+  font-size: 4.5rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  color: var(--text-muted);
+  margin-bottom: 50px;
+}
+
+/* --- Progress Bar --- */
+.progress-wrapper {
+  width: 400px;
+  margin: 0 auto;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 12px;
+  background: #e9ecef;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 70%; /* Le pourcentage */
+  background: var(--accent);
+  border-radius: 10px;
+  animation: loadProgress 2s ease-out forwards;
+}
+
+.progress-text {
+  font-weight: 800;
+  font-size: 1.2rem;
+}
+
+/* Animation de chargement */
+@keyframes loadProgress {
+  from {
+    width: 0;
+  }
+  to {
+    width: 70%;
+  }
+}
+
+/* --- Social Icons --- */
+.social-links {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.social-links a {
+  color: var(--text-main);
+  font-size: 1.5rem;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.social-links a:hover {
+  color: var(--accent);
+  transform: translateY(-3px);
+}
+
+/* --- Glow Dots --- */
+.glow-dot {
+  position: absolute;
+  background: var(--accent);
+  border-radius: 50%;
+  filter: blur(25px);
+  opacity: 0.5;
+  z-index: 1;
+}
+
+.dot-1 {
+  width: 40px;
+  height: 40px;
+  top: 20%;
+  left: 15%;
+}
+.dot-2 {
+  width: 20px;
+  height: 20px;
+  top: 15%;
+  right: 30%;
+}
+.dot-3 {
+  width: 30px;
+  height: 30px;
+  bottom: 30%;
+  left: 40%;
+}
+.dot-4 {
+  width: 25px;
+  height: 25px;
+  bottom: 20%;
+  right: 10%;
+}
+
+/* --- Footer --- */
+footer {
+  padding: 30px;
+  text-align: center;
+}
+
+.footer-links span {
+  margin: 0 15px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+  .progress-wrapper {
+    width: 80%;
+  }
+}

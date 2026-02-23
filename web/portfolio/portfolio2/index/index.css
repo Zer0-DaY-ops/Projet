@@ -27,6 +27,12 @@ header {
   font-weight: 600;
   letter-spacing: -0.5px;
 }
+.logo a {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+}
+
 .logo span {
   color: #f1c40f;
   text-shadow:
@@ -394,5 +400,86 @@ footer .photo img {
     top: 50%;
     left: 50%;
     transform: scale(1);
+  }
+}
+@media (max-width: 1024px) {
+  .logo {
+    padding-left: 20px;
+  }
+  nav a {
+    padding-right: 20px;
+  }
+  footer .container {
+    gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    padding-bottom: 20px;
+  }
+  .logo {
+    padding-left: 0;
+    margin-bottom: 15px;
+  }
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 0;
+  }
+  nav a {
+    padding-right: 0;
+  }
+  nav ul li:last-child a {
+    margin-right: 0;
+  }
+
+  main .slogan {
+    font-size: 35px;
+    text-align: center;
+    margin-left: 0;
+    padding: 0 20px;
+  }
+  main .sous-slogan {
+    font-size: 20px;
+  }
+
+  .trait2 {
+    padding: 30px 20px;
+    text-align: center;
+  }
+  .main-title {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .Mes-projets {
+    text-align: center;
+    margin-left: 0;
+  }
+  footer .container {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  footer .square {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    padding-bottom: 20px;
+  }
+  footer .photo {
+    height: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  main .slogan {
+    font-size: 28px;
+  }
+  .social-link {
+    font-size: 0.8rem;
   }
 }
