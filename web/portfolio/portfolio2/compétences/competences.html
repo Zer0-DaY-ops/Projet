@@ -13,97 +13,98 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
   </head>
   <body>
+    <div class="zone-lucioles">
+      <div class="luciole" style="top: 15%; left: 10%"></div>
+      <div class="luciole" style="top: 45%; left: 85%"></div>
+      <div class="luciole" style="top: 80%; left: 20%"></div>
+    </div>
+
     <header>
-      <nav class="navbar">
+      <nav class="navigation">
         <div class="logo">
           <a href="/index/index.html">Timéo François<span>.</span></a>
         </div>
-        <ul class="nav-links">
+        <ul class="liens-navigation">
           <li><a href="/about/about.html">À propos</a></li>
           <li><a href="/coming-soon/coming-soon.html">Projets</a></li>
+          <li><a href="competences.html" class="lien-actif">Compétences</a></li>
           <li>
-            <a href="/compétences/competences.html" class="active"
-              >Compétences</a
-            >
-          </li>
-          <li>
-            <a href="/contact/Contact.html" class="btn-contact">Contact</a>
+            <a href="/contact/Contact.html" class="bouton-contact">Contact</a>
           </li>
         </ul>
       </nav>
     </header>
 
-    <main class="container">
-      <section class="skills-header">
+    <main class="conteneur">
+      <div class="point-lumineux p1"></div>
+      <div class="point-lumineux p2"></div>
+
+      <section class="entete-competences">
         <h1>Mes Compétences</h1>
-        <p class="subtitle">Expertise technique et outils</p>
+        <p class="sous-titre">Mon expertise technique et mes outils favoris.</p>
       </section>
 
-      <section class="skills-grid">
-        <div class="skill-category">
-          <h2>Front-End</h2>
-          <div class="skill-list">
-            <div class="skill-item">
+      <section class="grille-competences">
+        <div class="categorie-competence">
+          <h2><i class="fas fa-code"></i> Front-End</h2>
+          <div class="liste-competences">
+            <div class="element-competence">
               <i class="devicon-html5-plain colored"></i> HTML5
             </div>
-            <div class="skill-item">
+            <div class="element-competence">
               <i class="devicon-css3-plain colored"></i> CSS3
             </div>
-            <div class="skill-item">
+            <div class="element-competence">
               <i class="devicon-javascript-plain colored"></i> JavaScript
             </div>
           </div>
         </div>
 
-        <div class="skill-category">
-          <h2>Back-End</h2>
-          <div class="skill-list">
-            <div class="skill-item">
+        <div class="categorie-competence">
+          <h2><i class="fas fa-server"></i> Back-End</h2>
+          <div class="liste-competences">
+            <div class="element-competence">
               <i class="devicon-python-plain colored"></i> Python
             </div>
-            <div class="skill-item">
+            <div class="element-competence">
               <i class="devicon-java-plain colored"></i> Java
             </div>
-            <div class="skill-item">
-              <i class="devicon-postgresql-plain colored"></i> SQL (PostgreSQL)
+            <div class="element-competence">
+              <i class="devicon-postgresql-plain colored"></i> SQL
             </div>
           </div>
         </div>
 
-        <div class="skill-category">
-          <h2>DevOps & Outils</h2>
-          <div class="skill-list">
-            <div class="skill-item">
+        <div class="categorie-competence">
+          <h2><i class="fas fa-tools"></i> Outils & OS</h2>
+          <div class="liste-competences">
+            <div class="element-competence">
               <i class="devicon-git-plain colored"></i> Git
             </div>
-            <div class="skill-item">
-              <img
-                src="https://www.w3.org/Icons/w3c_home"
-                alt="W3C Logo"
-                class="custom-icon"
-              />
-              W3C
-            </div>
-            <div class="skill-item">
+            <div class="element-competence">
               <i class="devicon-linux-plain"></i> Linux
             </div>
-            <div class="skill-item">
+            <div class="element-competence">
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Fedora_logo.svg"
                 alt="Fedora"
-                class="custom-icon"
+                class="icone-perso"
               />
               Fedora
             </div>
-            <div class="skill-item">
+            <div class="element-competence">
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Google_Gemini_logo.svg"
                 alt="Gemini"
-                class="custom-icon"
+                class="icone-perso"
               />
-              Gemini
+              Gemini AI
             </div>
           </div>
         </div>
@@ -111,10 +112,19 @@
     </main>
 
     <footer>
-      <div class="footer-links">
-        <a href="https://github.com/Zer0-DaY-ops">GitHub</a>
-        <a href="https://www.linkedin.com/in/tim%C3%A9o-francois/">LinkedIn</a>
-        <a href="/photo/cv_pro_T.F.pdf">CVs</a>
+      <div class="liens-footer">
+        <a href="https://github.com/Zer0-DaY-ops" target="_blank"
+          ><i class="fab fa-github"></i> GitHub</a
+        >
+        <a href="https://www.linkedin.com/in/timéo-francois/" target="_blank"
+          ><i class="fab fa-linkedin-in"></i> LinkedIn</a
+        >
+        <a href="/photo/cv_pro_T.F.pdf" target="_blank"
+          ><i class="far fa-file-pdf"></i> CV (FR)</a
+        >
+        <a href="/photo/cv_pro_T.F.pdf" target="_blank"
+          ><i class="far fa-file-pdf"></i> CV (EN)</a
+        >
       </div>
     </footer>
   </body>

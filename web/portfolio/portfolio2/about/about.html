@@ -9,72 +9,92 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
   </head>
   <body>
-     <div class="zone-lucioles">
-    <div class="firefly"></div>
-    <div class="firefly"></div>
-    <div class="firefly"></div>
-    
+    <div class="zone-lucioles">
+      <div class="luciole" style="top: 15%; left: 10%"></div>
+      <div class="luciole" style="top: 45%; left: 85%"></div>
+      <div class="luciole" style="top: 80%; left: 20%"></div>
+    </div>
+
     <header>
-      <nav class="navbar">
+      <nav class="navigation">
         <div class="logo">
-            <a href="/index/index.html">Timéo François<span>.</span></a>
+          <a href="/index/index.html">Timéo François<span>.</span></a>
         </div>
-        <ul class="nav-links">
-          <li><a href="about.html" class="active">À propos</a></li>
+        <ul class="liens-navigation">
+          <li><a href="about.html" class="lien-actif">À propos</a></li>
           <li><a href="/coming-soon/coming-soon.html">Projets</a></li>
-          <li><a href="/compétences/competences.html">Compétences</a></li>
-          <li><a href="/contact/Contact.html" class="btn-contact">Contact</a></li>
+          <li><a href="/compétences/competences.html">Compétences</a></li>
+          <li>
+            <a href="/contact/Contact.html" class="bouton-contact">Contact</a>
+          </li>
         </ul>
       </nav>
     </header>
 
-    <main>
-      <section class="about-hero">
-        <div class="glow-dot dot-1"></div>
-        <div class="glow-dot dot-2"></div>
+    <main class="conteneur contenu-principal">
+      <div class="point-lumineux p1"></div>
+      <div class="point-lumineux p2"></div>
 
-        <div class="container hero-flex">
-          <div class="about-text">
-            <h1>À propos de <br />Timéo François</h1>
-            <p class="subtitle">Passionné. Créatif. Dévoué.</p>
+      <section class="hero-presentation">
+        <div class="flex-hero">
+          <div class="texte-presentation">
+            <h1>À propos de <br /><span>Timéo François</span></h1>
+            <p class="sous-titre">Passionné • Créatif • Dévoué</p>
             <p class="description">
-            Je suis un étudiant passionné, perpétuellement à la recherche d'évolution. 
-            Basé en France, je me concentre sur la création d'expériences web fluides et performantes.
-             Curieux de nature, j'aime explorer tout ce qui touche au développement full-stack,
-              à l'architecture digitale et à la sécurisation des infrastructures pour relever de nouveaux défis techniques.  
+              Je suis un étudiant passionné, perpétuellement à la recherche
+              d'évolution. Basé en France, je me concentre sur la création
+              d'expériences web fluides et performantes. <br /><br />
+              Curieux de nature, j'aime explorer tout ce qui touche au
+              développement full-stack, à l'architecture digitale et à la
+              cybersécurité pour relever de nouveaux défis techniques.
             </p>
           </div>
-          <div class="about-image">
-            <img src="/photo/cv.png" alt="Portrait de Timéo François" />
+          <div class="image-presentation">
+            <div class="cadre-image">
+              <img src="/photo/cv.png" alt="Portrait de Timéo François" />
+            </div>
           </div>
         </div>
       </section>
 
-      <section class="stats">
-        <div class="container stats-grid">
-          <div class="stat-item">
+      <section class="statistiques">
+        <div class="grille-stats">
+          <div class="element-stat carte-verre">
             <h3>1+</h3>
-            <p>Années d'expérience</p>
+            <p>Année d'expérience</p>
           </div>
-          <div class="stat-item">
+          <div class="element-stat carte-verre">
             <h3>5+</h3>
             <p>Projets réalisés</p>
           </div>
-          <div class="stat-item">
+          <div class="element-stat carte-verre">
             <h3>100%</h3>
-            <p>Satisfaction client</p>
+            <p>Détermination</p>
           </div>
         </div>
       </section>
     </main>
 
     <footer>
-      <div class="footer-links">
-        <a href="https://github.com/Zer0-DaY-ops">GitHub</a>
-        <a href="https://www.linkedin.com/in/tim%C3%A9o-francois/">LinkedIn</a>
-        <a href="/photo/cv_pro_T.F.pdf">CVs</a>
+      <div class="liens-footer">
+        <a href="https://github.com/Zer0-DaY-ops" target="_blank"
+          ><i class="fab fa-github"></i> GitHub</a
+        >
+        <a href="https://www.linkedin.com/in/timéo-francois/" target="_blank"
+          ><i class="fab fa-linkedin-in"></i> LinkedIn</a
+        >
+        <a href="/photo/cv_pro_T.F.pdf" target="_blank"
+          ><i class="far fa-file-pdf"></i> CV (FR)</a
+        >
+        <a href="/photo/cv_pro_T.F.pdf" target="_blank"
+          ><i class="far fa-file-pdf"></i> CV (EN)</a
+        >
       </div>
     </footer>
   </body>

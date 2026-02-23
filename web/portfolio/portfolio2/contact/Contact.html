@@ -15,82 +15,97 @@
     />
   </head>
   <body>
+    <div class="zone-lucioles">
+      <div class="luciole" style="top: 20%; left: 10%"></div>
+      <div class="luciole" style="top: 60%; left: 80%"></div>
+    </div>
+
     <header>
-      <nav class="navbar">
+      <nav class="navigation">
         <div class="logo">
           <a href="/index/index.html">Timéo François<span>.</span></a>
         </div>
-        <ul class="nav-links">
+        <ul class="liens-navigation">
           <li><a href="/about/about.html">À propos</a></li>
           <li><a href="/coming-soon/coming-soon.html">Projets</a></li>
-          <li><a href="/compétences/competences.html">Compétences</a></li>
+          <li><a href="/compétences/competences.html">Compétences</a></li>
           <li>
-            <a href="/contact/Contact.html" class="btn-contact active"
-              >Contact</a
-            >
+            <a href="Contact.html" class="bouton-contact active">Contact</a>
           </li>
         </ul>
       </nav>
     </header>
 
-    <main class="container">
-      <section class="contact-section">
-        <div class="contact-grid">
-          <div class="contact-form-container">
-            <h1>Me Contacter</h1>
-            <p class="subtitle">Travaillons ensemble.</p>
+    <main class="conteneur">
+      <section class="section-contact">
+        <div class="point-lumineux p1"></div>
+        <div class="point-lumineux p3"></div>
 
-            <form class="contact-form">
-              <div class="form-group">
-                <label for="name">Nom</label>
+        <div class="grille-contact">
+          <div class="bloc-formulaire">
+            <h1>Me Contacter</h1>
+            <p class="sous-titre">
+              Un projet ? Une question ? Travaillons ensemble.
+            </p>
+
+            <form class="formulaire-contact">
+              <div class="groupe-champ">
+                <label for="name">NOM COMPLET</label>
                 <input
                   type="text"
                   id="name"
                   name="name"
                   placeholder="Ton nom"
+                  required
                 />
               </div>
-              <div class="form-group">
-                <label for="email">Email professionnel</label>
+              <div class="groupe-champ">
+                <label for="email">EMAIL PROFESSIONNEL</label>
                 <input
                   type="email"
                   id="email"
                   name="email"
                   placeholder="ton@email.com"
+                  required
                 />
               </div>
-              <div class="form-group">
-                <label for="message">Message</label>
+              <div class="groupe-champ">
+                <label for="message">MESSAGE</label>
                 <textarea
                   id="message"
                   name="message"
                   rows="5"
-                  placeholder="Ton message..."
+                  placeholder="Parle-moi de ton projet..."
+                  required
                 ></textarea>
               </div>
-              <button type="submit" class="btn-submit">Envoyer</button>
+              <button type="submit" class="bouton-envoi">
+                ENVOYER LE MESSAGE
+              </button>
             </form>
           </div>
 
-          <div class="contact-info">
-            <div class="info-item">
+          <div class="infos-contact">
+            <div class="element-info">
               <i class="fab fa-discord"></i>
               <span>strongbob2.0</span>
             </div>
-            <div class="info-item">
+            <div class="element-info">
               <i class="fas fa-envelope"></i>
               <span>timfran134@gmail.com</span>
             </div>
-            <div class="info-item">
+            <div class="element-info">
               <i class="fas fa-location-dot"></i>
               <span>Lille, France</span>
             </div>
 
-            <div class="social-icons">
-              <a href="https://github.com/Zer0-DaY-ops"
+            <div class="icones-sociaux">
+              <a href="https://github.com/Zer0-DaY-ops" target="_blank"
                 ><i class="fab fa-github"></i
               ></a>
-              <a href="https://www.linkedin.com/in/tim%C3%A9o-francois/"
+              <a
+                href="https://www.linkedin.com/in/timéo-francois/"
+                target="_blank"
                 ><i class="fab fa-linkedin-in"></i
               ></a>
             </div>
@@ -100,10 +115,19 @@
     </main>
 
     <footer>
-      <div class="footer-links">
-        <a href="https://github.com/Zer0-DaY-ops">GitHub</a>
-        <a href="https://www.linkedin.com/in/tim%C3%A9o-francois/">LinkedIn</a>
-        <a href="/photo/cv_pro_T.F.pdf">CVs</a>
+      <div class="liens-footer">
+        <a href="https://github.com/Zer0-DaY-ops" target="_blank">
+          <i class="fab fa-github"></i> GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/timéo-francois/" target="_blank">
+          <i class="fab fa-linkedin-in"></i> LinkedIn
+        </a>
+        <a href="/photo/cv_pro_T.F.pdf" target="_blank">
+          <i class="far fa-file-pdf"></i> CV (FR)
+        </a>
+        <a href="/photo/cv_pro_T.F.pdf" target="_blank">
+          <i class="far fa-file-pdf"></i> CV (EN)
+        </a>
       </div>
     </footer>
   </body>

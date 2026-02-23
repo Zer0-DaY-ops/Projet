@@ -15,6 +15,12 @@
     />
   </head>
   <body>
+    <div class="zone-lucioles">
+      <div class="firefly" style="top: 25%; left: 15%"></div>
+      <div class="firefly" style="top: 70%; left: 85%"></div>
+      <div class="firefly" style="top: 10%; left: 60%"></div>
+    </div>
+
     <header>
       <nav class="navbar">
         <div class="logo">
@@ -22,50 +28,66 @@
         </div>
         <ul class="nav-links">
           <li><a href="/about/about.html">À propos</a></li>
-          <li><a href="/coming-soon/coming-soon.html">Projets</a></li>
-          <li><a href="/compétences/competences.html">Compétences</a></li>
           <li>
-            <a href="/contact/Contact.html" class="btn-contact active"
-              >Contact</a
+            <a href="/coming-soon/coming-soon.html" class="active-link"
+              >Projets</a
             >
+          </li>
+          <li><a href="/compétences/competences.html">Compétences</a></li>
+          <li>
+            <a href="/contact/Contact.html" class="btn-contact">Contact</a>
           </li>
         </ul>
       </nav>
     </header>
 
-    <main class="coming-soon-container">
+    <main class="container">
       <div class="glow-dot dot-1"></div>
-      <div class="glow-dot dot-2"></div>
       <div class="glow-dot dot-3"></div>
-      <div class="glow-dot dot-4"></div>
 
-      <section class="content">
-        <h1>Page en construction...</h1>
-        <p class="subtitle">Revenez bientôt !</p>
+      <section class="coming-soon-content">
+        <h1>Bientôt disponible<span>.</span></h1>
+        <p class="subtitle">Je peaufine les derniers détails de mes projets.</p>
 
-        <div class="progress-wrapper">
+        <div class="glass-card">
+          <div class="progress-info">
+            <span>Développement du portfolio</span>
+            <span class="percentage">70%</span>
+          </div>
           <div class="progress-bar">
             <div class="progress-fill"></div>
           </div>
-          <span class="progress-text">70%</span>
-        </div>
 
-        <div class="social-link">
-          <a href="https://github.com/Zer0-DaY-ops"
-            ><i class="fab fa-github"></i
-          ></a>
-          <a href="https://www.linkedin.com/in/tim%C3%A9o-francois/"
-            ><i class="fab fa-linkedin-in"></i
-          ></a>
+          <div class="social-links">
+            <a href="https://github.com/Zer0-DaY-ops" target="_blank"
+              ><i class="fab fa-github"></i
+            ></a>
+            <a
+              href="https://www.linkedin.com/in/timéo-francois/"
+              target="_blank"
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+          </div>
         </div>
       </section>
     </main>
 
     <footer>
       <div class="footer-links">
-        <a href="https://github.com/Zer0-DaY-ops">GitHub</a>
-        <a href="https://www.linkedin.com/in/tim%C3%A9o-francois/">LinkedIn</a>
-        <a href="/photo/cv_pro_T.F.pdf">CVs</a>
+        <div class="footer-links">
+          <a href="https://github.com/Zer0-DaY-ops" target="_blank"
+            ><i class="fab fa-github"></i> GitHub</a
+          >
+          <a href="https://www.linkedin.com/in/timéo-francois/" target="_blank"
+            ><i class="fab fa-linkedin-in"></i> LinkedIn</a
+          >
+          <a href="/photo/cv_pro_T.F.pdf" target="_blank"
+            ><i class="far fa-file-pdf"></i> CV (FR)</a
+          >
+          <a href="/photo/cv_pro_T.F.pdf" target="_blank"
+            ><i class="far fa-file-pdf"></i> CV (EN)</a
+          >
+        </div>
       </div>
     </footer>
   </body>
