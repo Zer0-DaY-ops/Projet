@@ -1,0 +1,298 @@
+/* ─── VARIABLES ET RESET ─────────────────────────────────────── */
+:root {
+  --primary: #2563eb;
+  --secondary: #7c3aed;
+  --success: #10b981;
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --card: #ffffff;
+  --gold: #f59e0b;
+  --silver: #94a3b8;
+  --bronze: #b45309;
+  --border: #e2e8f0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family:
+    "Segoe UI",
+    system-ui,
+    -apple-system,
+    sans-serif;
+  background: var(--bg);
+  margin: 0;
+  padding: 20px;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ─── HEADER ET RECHERCHE ────────────────────────────────────── */
+.card-main {
+  background: var(--card);
+  padding: 60px 40px;
+  border-radius: 30px;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  border: 1px solid var(--border);
+  margin-bottom: 30px;
+}
+
+h1 {
+  font-size: 3.5rem;
+  margin: 0;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  color: #64748b;
+  font-size: 1.1rem;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.search-bar {
+  display: flex;
+  gap: 10px;
+  background: #f1f5f9;
+  padding: 10px;
+  border-radius: 20px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.search-bar:focus-within {
+  border-color: var(--primary);
+  background: white;
+  box-shadow: 0 0 0 5px rgba(37, 99, 235, 0.1);
+}
+
+.search-bar input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 12px 20px;
+  font-size: 1.1rem;
+  outline: none;
+  color: var(--text);
+}
+
+.btn-main {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    background 0.2s;
+}
+
+.btn-main:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+/* ─── PODIUM (TOP 3) ─────────────────────────────────────────── */
+#podium-section {
+  display: none;
+  margin: 50px 0;
+  animation: slideUp 0.6s ease-out;
+}
+
+.podium-container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 20px;
+  padding-top: 40px;
+  min-height: 420px;
+}
+
+.podium-item {
+  background: white;
+  border-radius: 24px;
+  padding: 25px;
+  text-align: center;
+  border: 2px solid var(--border);
+  position: relative;
+  flex: 1;
+  max-width: 300px;
+  transition: transform 0.3s ease;
+}
+
+.podium-item:hover {
+  transform: translateY(-5px);
+}
+
+.podium-item.first {
+  height: 450px;
+  border-color: var(--gold);
+  box-shadow: 0 20px 40px rgba(245, 158, 11, 0.1);
+  z-index: 2;
+}
+
+.podium-item.second {
+  height: 380px;
+  border-color: var(--silver);
+}
+.podium-item.third {
+  height: 340px;
+  border-color: var(--bronze);
+}
+
+.medal-badge {
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.medal-1 {
+  background: var(--gold);
+}
+.medal-2 {
+  background: var(--silver);
+}
+.medal-3 {
+  background: var(--bronze);
+}
+
+/* ─── GRILLE DE RÉSULTATS ────────────────────────────────────── */
+.results-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  margin-top: 30px;
+}
+
+.product-card {
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.3s;
+}
+
+.product-card:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.product-img {
+  width: 100%;
+  height: 150px;
+  object-fit: contain;
+  margin: 15px 0;
+}
+
+.price-tag {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 10px 0;
+}
+
+/* ─── EMAIL ET CHARGEMENT ────────────────────────────────────── */
+#emailZone {
+  display: none;
+  background: #eff6ff;
+  padding: 25px;
+  border-radius: 20px;
+  margin: 30px 0;
+  border: 2px dashed var(--primary);
+  text-align: center;
+}
+
+#emailZone input {
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 1px solid #cbd5e1;
+  width: 250px;
+  margin: 0 10px;
+}
+
+.btn-mail {
+  background: var(--success);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#loader {
+  display: none;
+  text-align: center;
+  padding: 60px;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid var(--border);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 20px;
+}
+
+/* ─── ANIMATIONS ─────────────────────────────────────────────── */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .podium-container {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+  }
+  .podium-item {
+    width: 100%;
+    height: auto !important;
+    margin-bottom: 20px;
+    transform: none !important;
+  }
+  h1 {
+    font-size: 2.5rem;
+  }
+}

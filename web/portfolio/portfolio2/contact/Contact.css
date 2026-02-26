@@ -185,7 +185,7 @@ h1 {
 
 .element-info i {
   font-size: 1.4rem;
-  color: var(--accent-jaune);
+  colorr: var(--texte-principal);
   width: 30px;
   text-align: center;
 }

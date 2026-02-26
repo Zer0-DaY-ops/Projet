@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SmartPrice | Comparateur de prix intelligent</title>
+    <link rel="stylesheet" href="index.css  " />
+  </head>
+  <body>
+    <div class="container">
+      <div class="card-main">
+        <h1>🔍 SmartPrice</h1>
+        <div class="subtitle">
+          L'IA au service de votre budget. Évitez les accessoires, trouvez la
+          console.
+        </div>
+        <div class="search-bar">
+          <input
+            type="text"
+            id="query"
+            placeholder="Ex: ps4, console ps5..."
+            onkeypress="handleEnter(event)"
+          />
+          <button class="btn-main" id="searchBtn" onclick="runSearch()">
+            Comparer
+          </button>
+        </div>
+      </div>
+
+      <div id="podium-section">
+        <h2 style="text-align: center; font-size: 2.2rem; margin-bottom: 50px">
+          🏆 Meilleures Offres Trouvées
+        </h2>
+        <div class="podium-container" id="podium-content"></div>
+      </div>
+
+      <div id="emailZone">
+        <strong>📧 Envoyer le Top 10 par mail : </strong>
+        <input type="email" id="userMail" placeholder="votre@email.com" />
+        <button onclick="sendMail()" class="btn-mail">Recevoir</button>
+      </div>
+
+      <div id="loader">
+        <div class="spinner"></div>
+        <p>
+          <strong>Filtrage intelligent en cours...</strong><br />Nous séparons
+          les consoles des jeux pour vous.
+        </p>
+      </div>
+
+      <div id="results" class="results-grid"></div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

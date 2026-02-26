@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BatiPro - Construction & Rénovation</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="btp.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="logo">
+          <i class="fa-solid fa-city text-accent"></i> BATI<span>PRO</span>
+        </div>
+        <ul class="nav-links">
+          <li><a href="#accueil" class="active">Accueil</a></li>
+          <li><a href="#expertises">Nos Expertises</a></li>
+          <li><a href="#valeurs">Nos Valeurs</a></li>
+        </ul>
+        <a href="../index.html" class="btn-devis">
+          <i class="fa-solid fa-file-signature"></i> OBTENIR UN DEVIS
+        </a>
+      </div>
+    </nav>
+
+    <header id="accueil" class="hero-section">
+      <div class="hero-content">
+        <h1>BÂTIR VOS PROJETS <span>SUR DES BASES SOLIDES</span></h1>
+        <p>
+          De la fondation aux finitions, BatiPro vous accompagne dans tous vos
+          projets de construction et de rénovation avec une exigence absolue sur
+          la qualité.
+        </p>
+        <div class="hero-buttons">
+          <a href="#expertises" class="btn-primary">Découvrir nos services</a>
+          <a href="btp.html" class="btn-secondary">Estimer mon projet</a>
+        </div>
+      </div>
+      <div class="hero-image"></div>
+    </header>
+
+    <section class="stats-section">
+      <div class="stat-box">
+        <h3>15+</h3>
+        <p>Années d'expérience</p>
+      </div>
+      <div class="stat-box">
+        <h3>250</h3>
+        <p>Chantiers livrés</p>
+      </div>
+      <div class="stat-box">
+        <h3>100%</h3>
+        <p>Clients satisfaits</p>
+      </div>
+      <div class="stat-box">
+        <h3>Garantie</h3>
+        <p>Décennale incluse</p>
+      </div>
+    </section>
+
+    <section id="expertises" class="services-section">
+      <div class="section-header">
+        <h2>NOS DOMAINES <span>D'INTERVENTION</span></h2>
+        <div class="divider"></div>
+        <p>
+          Une équipe d'artisans qualifiés pour répondre à tous les corps d'état.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="card-icon"><i class="fa-solid fa-trowel-bricks"></i></div>
+          <h3>Gros Œuvre</h3>
+          <p>
+            Fondations, terrassement, maçonnerie générale et élévation de murs.
+            La structure de votre bâtiment entre de bonnes mains.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <div class="card-icon"><i class="fa-solid fa-hammer"></i></div>
+          <h3>Second Œuvre & Rénovation</h3>
+          <p>
+            Plâtrerie, isolation, pose de cloisons et aménagement intérieur pour
+            donner vie à vos espaces.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <div class="card-icon"><i class="fa-solid fa-bolt"></i></div>
+          <h3>Électricité & Plomberie</h3>
+          <p>
+            Installations complètes, mise aux normes et raccordements par nos
+            techniciens certifiés.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="valeurs" class="cta-section">
+      <div class="cta-content">
+        <h2>PRÊT À LANCER VOTRE CHANTIER ?</h2>
+        <p>
+          Contactez-nous aujourd'hui pour une étude personnalisée et gratuite de
+          votre projet.
+        </p>
+        <a href="../index.html" class="btn-primary btn-large"
+          >GÉNÉRER MON DEVIS EN LIGNE</a
+        >
+      </div>
+    </section>
+
+    <script>
+      // Met à jour le menu actif au scroll
+      const sections = document.querySelectorAll("section, header");
+      const navLi = document.querySelectorAll(".nav-links a");
+
+      window.addEventListener("scroll", () => {
+        let current = "";
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop;
+          if (scrollY >= sectionTop - 100) {
+            current = section.getAttribute("id");
+          }
+        });
+
+        navLi.forEach((a) => {
+          a.classList.remove("active");
+          if (current && a.getAttribute("href") === "#" + current) {
+            a.classList.add("active");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

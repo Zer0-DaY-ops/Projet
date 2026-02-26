@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PriceHunter</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0a;
+    --surface: #111;
+    --border: #222;
+    --accent: #e8ff3f;
+    --accent2: #ff4f3f;
+    --text: #f0f0f0;
+    --muted: #555;
+    --card: #141414;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* ── Header ── */
+  header {
+    width: 100%;
+    padding: 2rem 2rem 0;
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+  }
+
+  .logo {
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: var(--accent);
+  }
+
+  .logo span {
+    color: var(--text);
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+  }
+
+  /* ── Search ── */
+  .search-wrap {
+    width: 100%;
+    max-width: 700px;
+    padding: 3rem 1.5rem 1rem;
+  }
+
+  .search-bar {
+    display: flex;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--surface);
+    transition: border-color 0.2s;
+  }
+
+  .search-bar:focus-within {
+    border-color: var(--accent);
+  }
+
+  .search-bar input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 1rem 1.2rem;
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem;
+    color: var(--text);
+  }
+
+  .search-bar input::placeholder { color: var(--muted); }
+
+  .search-bar button {
+    background: var(--accent);
+    border: none;
+    padding: 0 1.4rem;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #000;
+    cursor: pointer;
+    transition: opacity 0.15s;
+    letter-spacing: 0.02em;
+  }
+
+  .search-bar button:hover { opacity: 0.85; }
+  .search-bar button:active { opacity: 0.7; }
+
+  /* ── Chips sites ── */
+  .sites-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    padding: 0.75rem 0 0;
+  }
+
+  .chip {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    transition: all 0.2s;
+  }
+
+  .chip.ok { border-color: #2a4a00; color: #7eff3f; background: #0d1f00; }
+  .chip.err { border-color: #4a0000; color: #ff6b6b; background: #1f0000; }
+  .chip.loading { border-color: var(--border); color: var(--muted); animation: pulse 1s infinite; }
+
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+  /* ── Stats bar ── */
+  .stats {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    padding: 0.5rem 0 1.5rem;
+  }
+
+  .stats span { color: var(--accent); }
+
+  /* ── Results ── */
+  .results {
+    width: 100%;
+    max-width: 700px;
+    padding: 0 1.5rem 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.15s, transform 0.15s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card:hover {
+    border-color: #444;
+    transform: translateY(-1px);
+  }
+
+  .card.best {
+    border-color: var(--accent);
+  }
+
+  .card.best::before {
+    content: "MEILLEUR PRIX";
+    position: absolute;
+    top: 0.5rem;
+    right: 0.75rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    font-weight: 500;
+    color: #000;
+    background: var(--accent);
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+    letter-spacing: 0.05em;
+  }
+
+  .card-img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    border-radius: 6px;
+    background: #1a1a1a;
+    flex-shrink: 0;
+  }
+
+  .card-img-placeholder {
+    width: 64px;
+    height: 64px;
+    border-radius: 6px;
+    background: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    font-size: 1.4rem;
+    flex-shrink: 0;
+  }
+
+  .card-body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .card-site {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.2rem;
+  }
+
+  .card-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 0.15rem;
+  }
+
+  .card-condition {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--muted);
+  }
+
+  .card-price {
+    font-family: 'DM Mono', monospace;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--accent);
+    flex-shrink: 0;
+    text-align: right;
+  }
+
+  /* ── States ── */
+  .state {
+    width: 100%;
+    max-width: 700px;
+    padding: 4rem 1.5rem;
+    text-align: center;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.85rem;
+  }
+
+  .state .emoji { font-size: 2.5rem; display: block; margin-bottom: 1rem; }
+
+  .loader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 3rem 0;
+  }
+
+  .loader-bar {
+    width: 200px;
+    height: 2px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .loader-bar::after {
+    content: '';
+    display: block;
+    height: 100%;
+    width: 40%;
+    background: var(--accent);
+    animation: slide 1.2s ease-in-out infinite;
+  }
+
+  @keyframes slide {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(300%); }
+  }
+
+  .loader-text {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Price<span>Hunter</span><span class="tag">beta</span></div>
+</header>
+
+<div class="search-wrap">
+  <div class="search-bar">
+    <input
+      id="q"
+      type="text"
+      placeholder="iPhone 15, PS5, AirPods Pro..."
+      autocomplete="off"
+    />
+    <button id="btn" onclick="search()">→ Chercher</button>
+  </div>
+
+  <div class="sites-chips" id="chips">
+    <div class="chip">eBay</div>
+    <div class="chip">Leboncoin</div>
+    <div class="chip">Fnac</div>
+    <div class="chip">Cdiscount</div>
+    <div class="chip">Rakuten</div>
+  </div>
+
+  <div class="stats" id="stats"></div>
+</div>
+
+<div id="out"></div>
+
+<script>
+const input = document.getElementById("q");
+const out = document.getElementById("out");
+const stats = document.getElementById("stats");
+const chips = document.getElementById("chips");
+const siteList = ["eBay", "Leboncoin", "Fnac", "Cdiscount", "Rakuten"];
+
+input.addEventListener("keydown", (e) => { if (e.key === "Enter") search(); });
+
+function setChips(state) {
+  chips.innerHTML = siteList
+    .map((s) => `<div class="chip ${state}">${s}</div>`)
+    .join("");
+}
+
+function updateChipsFromResults(results) {
+  const found = new Set(results.map((r) => r.site));
+  chips.innerHTML = siteList
+    .map((s) => `<div class="chip ${found.has(s) ? "ok" : "err"}">${s}</div>`)
+    .join("");
+}
+
+function siteIcon(name) {
+  const icons = {
+    eBay: "🛒",
+    Leboncoin: "🟠",
+    Fnac: "📦",
+    Cdiscount: "🔵",
+    Rakuten: "🔴",
+  };
+  return icons[name] || "🏪";
+}
+
+async function search() {
+  const query = input.value.trim();
+  if (!query) return;
+
+  setChips("loading");
+  stats.innerHTML = "";
+  out.innerHTML = `
+    <div class="loader" style="width:100%;max-width:700px;padding:3rem 1.5rem;">
+      <div class="loader-bar"></div>
+      <div class="loader-text">Interrogation des sites en parallèle...</div>
+    </div>`;
+
+  const t = Date.now();
+
+  try {
+    const res = await fetch("/api/search", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ query }),
+    });
+    const data = await res.json();
+    const elapsed = ((Date.now() - t) / 1000).toFixed(2);
+
+    updateChipsFromResults(data.results || []);
+
+    if (!data.results || data.results.length === 0) {
+      out.innerHTML = `<div class="state">
+        <span class="emoji">🔍</span>
+        Aucun résultat trouvé pour "<strong>${query}</strong>".<br/>
+        Essaie avec des termes plus génériques.
+      </div>`;
+      stats.innerHTML = ``;
+      return;
+    }
+
+    stats.innerHTML = `<span>${data.results.length}</span> résultats · <span>${elapsed}s</span>${data.fromCache ? ' · <span>cache</span>' : ''}`;
+
+    out.innerHTML = `<div class="results" id="cards"></div>`;
+    const cards = document.getElementById("cards");
+
+    data.results.forEach((item, i) => {
+      const card = document.createElement("a");
+      card.href = item.link || "#";
+      card.target = "_blank";
+      card.rel = "noopener";
+      card.className = "card" + (i === 0 ? " best" : "");
+
+      const imgHtml = item.image
+        ? `<img class="card-img" src="${item.image}" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" loading="lazy">
+           <div class="card-img-placeholder" style="display:none">${siteIcon(item.site)}</div>`
+        : `<div class="card-img-placeholder">${siteIcon(item.site)}</div>`;
+
+      card.innerHTML = `
+        ${imgHtml}
+        <div class="card-body">
+          <div class="card-site">${item.site}</div>
+          <div class="card-title">${item.title}</div>
+          ${item.condition ? `<div class="card-condition">${item.condition}</div>` : ""}
+        </div>
+        <div class="card-price">${item.price}</div>
+      `;
+
+      cards.appendChild(card);
+    });
+
+  } catch (e) {
+    setChips("err");
+    out.innerHTML = `<div class="state">
+      <span class="emoji">⚠️</span>
+      Erreur de connexion. Le serveur est-il lancé ?
+    </div>`;
+    console.error(e);
+  }
+}
+</script>
+</body>
+</html>

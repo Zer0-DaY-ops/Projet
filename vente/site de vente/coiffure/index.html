@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Salon de Coiffure - Style & Co</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Roboto:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="logo">
+          <i
+            class="fa-solid fa-scissors"
+            style="color: #14b5ff; margin-right: 10px"
+          ></i>
+          <strong>COIFFURE</strong> <span>Pro</span>
+        </div>
+
+        <ul class="nav-links">
+          <li><a href="#" class="active">Accueil</a></li>
+          <li><a href="#">Le Salon</a></li>
+          <li><a href="#">Prestations</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+
+        <div class="nav-icons">
+          <a href="#"><i class="fa-solid fa-shopping-bag"></i></a>
+          <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+          <a href="#"><i class="fa-solid fa-share-nodes"></i></a>
+          <a href="#"><i class="fa-solid fa-bars"></i></a>
+        </div>
+      </div>
+    </nav>
+
+    <section class="hero-slider">
+      <div class="slide active" style="background-image: url(photo3.jpg)">
+        <div class="slide-content">
+          <h1>ÉLÉGANT ET TENDANCE</h1>
+          <p>
+            Nous développons des concepts de coiffure individuels pour révéler
+            votre personnalité. Notre équipe d'experts prend soin de la santé et
+            du style de vos cheveux.
+          </p>
+          <a href="#" class="btn">PRENDRE RENDEZ-VOUS</a>
+        </div>
+      </div>
+      <div class="slide" style="background-image: url(photo1.jpg)">
+        <div class="slide-content">
+          <h1>COULEURS ÉCLATANTES</h1>
+          <p>
+            Des techniques de coloration modernes du balayage aux teintes
+            vibrantes. Laissez nos coloristes transformer votre look avec des
+            produits premium.
+          </p>
+          <a href="#" class="btn">DÉCOUVRIR NOS TARIFS</a>
+        </div>
+      </div>
+      <div class="slide" style="background-image: url(photo2.jpg)">
+        <div class="slide-content">
+          <h1>SOINS SUR MESURE</h1>
+          <p>
+            Redonnez vie à vos cheveux avec nos rituels de soins profonds. Un
+            moment de détente absolue dans une ambiance chaleureuse et
+            harmonieuse.
+          </p>
+          <a href="#" class="btn">VOIR LES SOINS</a>
+        </div>
+      </div>
+
+      <div class="slider-indicators">
+        <div class="indicator active" onclick="goToSlide(0)"></div>
+        <div class="indicator" onclick="goToSlide(1)"></div>
+        <div class="indicator" onclick="goToSlide(2)"></div>
+      </div>
+    </section>
+
+    <section class="services-section">
+      <div class="services-container">
+        <div class="services-image-wrapper">
+          <div class="border-offset"></div>
+          <img
+            src="https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            alt="Produits de coiffure"
+          />
+        </div>
+
+        <div class="services-grid">
+          <div class="service-card highlight-card">
+            <h2>VOIR TOUTES<br />LES PRESTATIONS</h2>
+            <hr />
+            <a href="#" class="btn-outline">TOUS LES SERVICES</a>
+          </div>
+
+          <div class="service-card">
+            <div class="icon-wrapper">
+              <i class="fa-solid fa-scissors icon-green"></i>
+            </div>
+            <h3>COUPE & BRUSHING</h3>
+            <hr />
+            <p>
+              Nous créons la coupe parfaite adaptée à la morphologie de votre
+              visage et à votre style de vie.
+            </p>
+          </div>
+
+          <div class="service-card">
+            <div class="icon-wrapper">
+              <i class="fa-solid fa-wand-magic-sparkles icon-green"></i>
+            </div>
+            <h3>COLORATION</h3>
+            <hr />
+            <p>
+              Développement et mise en œuvre des meilleures techniques de
+              coloration (Ombré, Balayage, Mèches).
+            </p>
+          </div>
+
+          <div class="service-card">
+            <div class="icon-wrapper">
+              <i class="fa-regular fa-comments icon-green"></i>
+            </div>
+            <h3>CONSULTATION VISTA</h3>
+            <hr />
+            <p>
+              Nos spécialistes sont prêts à vous conseiller sur n'importe quel
+              sujet lié à la santé de vos cheveux.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      let currentSlide = 0;
+      const slides = document.querySelectorAll(".slide");
+      const indicators = document.querySelectorAll(".indicator");
+
+      function goToSlide(index) {
+        slides[currentSlide].classList.remove("active");
+        indicators[currentSlide].classList.remove("active");
+        currentSlide = index;
+        slides[currentSlide].classList.add("active");
+        indicators[currentSlide].classList.add("active");
+      }
+
+      // Défilement automatique toutes les 5 secondes
+      setInterval(() => {
+        let nextSlide = (currentSlide + 1) % slides.length;
+        goToSlide(nextSlide);
+      }, 5000);
+    </script>
+  </body>
+</html>

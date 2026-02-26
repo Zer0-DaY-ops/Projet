@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Comparateur de Prix Ultra</title>
+    <style>
+      :root {
+        --primary: #2563eb;
+        --success: #16a34a;
+        --bg: #f8fafc;
+      }
+      body {
+        font-family:
+          system-ui,
+          -apple-system,
+          sans-serif;
+        background: var(--bg);
+        margin: 0;
+        padding: 20px;
+      }
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+      .header {
+        background: white;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      h1 {
+        color: #1e293b;
+        margin-top: 0;
+      }
+      .search-area {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        margin-top: 20px;
+      }
+      input {
+        padding: 12px 20px;
+        width: 300px;
+        border: 2px solid #e2e8f0;
+        border-radius: 10px;
+        font-size: 16px;
+        outline: none;
+        transition: border 0.2s;
+      }
+      input:focus {
+        border-color: var(--primary);
+      }
+      button {
+        padding: 12px 25px;
+        background: var(--primary);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: transform 0.1s;
+      }
+      button:active {
+        transform: scale(0.95);
+      }
+      button:disabled {
+        background: #94a3b8;
+        cursor: not-allowed;
+      }
+
+      #loader {
+        display: none;
+        margin: 20px 0;
+        font-weight: 500;
+        color: var(--primary);
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
+      }
+      .card {
+        background: white;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        border-top: 4px solid #e2e8f0;
+      }
+      .card.top {
+        border-top-color: var(--success);
+        background: #f0fdf4;
+        position: relative;
+      }
+      .card.top::before {
+        content: "🏆 Meilleur prix";
+        position: absolute;
+        top: -12px;
+        right: 10px;
+        background: var(--success);
+        color: white;
+        padding: 2px 10px;
+        border-radius: 10px;
+        font-size: 12px;
+      }
+      .site-name {
+        font-size: 14px;
+        text-transform: uppercase;
+        color: #64748b;
+        letter-spacing: 0.05em;
+        margin-bottom: 10px;
+      }
+      .price {
+        font-size: 28px;
+        font-weight: 800;
+        color: #1e293b;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>🚀 Comparateur Multi-Sites</h1>
+        <div class="search-area">
+          <input
+            type="text"
+            id="produit"
+            placeholder="Nom du produit ou référence..."
+          />
+          <button id="btn" onclick="lancerRecherche()">
+            Comparer les prix
+          </button>
+        </div>
+        <div id="loader">⏳ Analyse des boutiques en cours...</div>
+      </div>
+
+      <div id="resultats" class="grid"></div>
+    </div>
+
+    <script>
+      async function lancerRecherche() {
+        const input = document.getElementById("produit");
+        const btn = document.getElementById("btn");
+        const resDiv = document.getElementById("resultats");
+        const loader = document.getElementById("loader");
+
+        if (!input.value) return;
+
+        // Interface UI
+        resDiv.innerHTML = "";
+        loader.style.display = "block";
+        btn.disabled = true;
+
+        try {
+          const response = await fetch("/api/search", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ produit: input.value }),
+          });
+
+          const data = await response.json();
+
+          if (data.length === 0) {
+            resDiv.innerHTML = "<p>Aucun résultat trouvé ou sites bloqués.</p>";
+          }
+
+          data.forEach((item, index) => {
+            const card = document.createElement("div");
+            card.className = `card ${index === 0 ? "top" : ""}`;
+            card.innerHTML = `
+                        <div class="site-name">${item.site}</div>
+                        <div class="price">${item.prix}</div>
+                    `;
+            resDiv.appendChild(card);
+          });
+        } catch (err) {
+          alert("Erreur de connexion au serveur.");
+        } finally {
+          loader.style.display = "none";
+          btn.disabled = false;
+        }
+      }
+    </script>
+  </body>
+</html>

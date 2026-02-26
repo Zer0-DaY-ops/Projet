@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SmartPrice | Comparateur 20 Sites</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="card-main">
+        <div class="badge">🚀 Propulsé sur 20 boutiques FR</div>
+        <h1>🔍 SmartPrice</h1>
+        <div class="subtitle">
+          Trouvez le meilleur prix parmi eBay, Amazon, LDLC, BackMarket,
+          Micromania et plus...
+        </div>
+        <div class="search-bar">
+          <input
+            type="text"
+            id="query"
+            placeholder="Ex: ps4, console ps5..."
+            onkeypress="handleEnter(event)"
+          />
+          <button class="btn-main" id="searchBtn" onclick="runSearch()">
+            Comparer
+          </button>
+        </div>
+      </div>
+
+      <div id="podium-section">
+        <h2 style="text-align: center; font-size: 2.2rem; margin-bottom: 50px">
+          🏆 Meilleures Offres Trouvées
+        </h2>
+        <div class="podium-container" id="podium-content"></div>
+      </div>
+
+      <div id="emailZone">
+        <strong style="font-size: 1.1rem; color: #1e293b"
+          >📧 Recevoir le Top 5 par email :
+        </strong>
+        <input type="email" id="userMail" placeholder="votre@email.com" />
+        <button onclick="sendMail()">Envoyer</button>
+      </div>
+
+      <div id="loader">
+        <div class="spinner"></div>
+        <p>
+          <strong>Recherche en cours...</strong><br />Analyse simultanée de 20
+          sites de e-commerce.
+        </p>
+      </div>
+
+      <div id="results" class="results-grid"></div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
