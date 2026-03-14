@@ -232,15 +232,29 @@
           </ul>
         </div>
         <div class="contact-form-wrapper">
-          <form class="custom-form">
+          <form
+            action="https://formspree.io/f/mqeydkrz"
+            method="POST"
+            class="custom-form"
+          >
             <div class="input-group">
-              <input type="text" placeholder="Votre nom complet" required />
+              <input
+                type="text"
+                name="nom_client"
+                placeholder="Votre nom complet"
+                required
+              />
             </div>
             <div class="input-group">
-              <input type="email" placeholder="Votre adresse e-mail" required />
+              <input
+                type="email"
+                name="email"
+                placeholder="Votre adresse e-mail"
+                required
+              />
             </div>
             <div class="input-group">
-              <select required>
+              <select name="type_projet" required>
                 <option value="" disabled selected>Type de projet</option>
                 <option value="vitrine">Site Vitrine</option>
                 <option value="one-page">Site One Page (Essentiel)</option>
@@ -250,11 +264,18 @@
             </div>
             <div class="input-group">
               <textarea
+                name="message"
                 rows="4"
                 placeholder="Parlez-moi brièvement de votre projet..."
                 required
               ></textarea>
             </div>
+            <input
+              type="hidden"
+              name="_subject"
+              value="Nouveau message Portfolio"
+            />
+
             <button type="submit" class="btn-buy" style="width: 100%">
               Demander mon devis
             </button>
